@@ -40,11 +40,21 @@ document.addEventListener('DOMContentLoaded', () => {
     btnNo.addEventListener('mouseover', moveButton);
 
     // 3. Klik Tombol IYA -> Buka Surat
-    btnYes.addEventListener('click', () => {
+  btnYes.addEventListener('click', () => {
+    const envelope = document.getElementById('envelope').querySelector('.envelope');
+    
+    // 1. Jalankan animasi amplop terbuka
+    envelope.classList.add('open');
+    
+    // 2. Tunggu animasi amplop selesai, baru munculkan surat besar
+    setTimeout(() => {
         questionSection.classList.add('hidden');
         letterSection.classList.remove('hidden');
-        setInterval(createHeart, 300); // Mulai hujan hati
-    });
+        
+        // Jalankan hujan hati
+        setInterval(createHeart, 250);
+    }, 1500); // 1.5 detik delay agar terasa dramatis
+});
 
     function createHeart() {
         const heart = document.createElement('div');
@@ -59,3 +69,4 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => { heart.remove(); }, 5000);
     }
 });
+
