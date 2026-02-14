@@ -1,4 +1,8 @@
-/* General Setup */
+/* =========================================
+   STYLE UNTUK SURAT CINTA ABE
+   ========================================= */
+
+/* Setup Dasar */
 * {
     margin: 0;
     padding: 0;
@@ -6,8 +10,10 @@
 }
 
 body {
+    /* Background Biru Romantis Gradasi */
     background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
     height: 100vh;
+    width: 100vw;
     overflow: hidden;
     font-family: 'Dancing Script', cursive;
     display: flex;
@@ -16,153 +22,176 @@ body {
     color: white;
 }
 
+/* Container Utama */
+#main-container {
+    text-align: center;
+    width: 100%;
+    z-index: 10;
+}
+
 .hidden {
     display: none !important;
 }
 
-/* Pohon Cinta */
+/* =========================================
+   POHON CINTA (VERSI MINIMALIS)
+   ========================================= */
+
 #tree-container {
-    position: relative;
     cursor: pointer;
-    text-align: center;
-    transition: transform 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
 }
 
+#tree-container:hover {
+    transform: scale(1.05);
+}
+
+/* Hati Raksasa sebagai Mahkota */
+#big-heart {
+    font-size: 150px; /* Ukuran Hati */
+    line-height: 1;
+    margin-bottom: -15px; /* Menempelkan ke batang */
+    animation: heartbeat 1.2s infinite; /* Efek Berdetak */
+    filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.4));
+    user-select: none;
+}
+
+/* Batang Pohon */
 .tree-trunk {
-    width: 20px;
-    height: 150px;
-    background: #5d4037;
-    margin: 0 auto;
+    width: 25px;
+    height: 120px;
+    background: #5d4037; /* Coklat Kayu */
     border-radius: 10px;
-}
-
-#leaves-container {
-    position: absolute;
-    top: -120px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 200px;
-}
-
-.leaf {
-    position: absolute;
-    font-size: 2rem;
-    animation: sway 3s ease-in-out infinite alternate;
-}
-
-@keyframes sway {
-    from { transform: rotate(-5deg); }
-    to { transform: rotate(10deg); }
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
 }
 
 .instruction {
     margin-top: 20px;
-    font-size: 1.5rem;
-    animation: pulse 1.5s infinite;
+    font-size: 1.8rem;
+    color: #fff;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    animation: fadePulse 1.5s infinite;
 }
 
-@keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-}
+/* =========================================
+   PERTANYAAN & TOMBOL
+   ========================================= */
 
-/* Question & Envelope Area */
 #question-section {
-    text-align: center;
-    max-width: 90%;
-    animation: fadeIn 1s forwards;
+    padding: 20px;
+    animation: fadeIn 1s ease-in;
 }
-
-.envelope-container {
-    width: 200px;
-    height: 140px;
-    background: #fef2f2;
-    margin: 20px auto;
-    position: relative;
-    border-radius: 5px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.envelope-body { color: #be185d; }
-.stamp { font-size: 2rem; }
-.envelope-text { font-weight: bold; font-family: sans-serif; font-size: 0.8rem; }
 
 .romantic-text {
     font-size: 1.8rem;
-    margin-bottom: 20px;
+    margin: 25px 0;
     line-height: 1.4;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
-/* Buttons */
-.button-group {
-    position: relative;
-    height: 100px;
-}
-
 .btn {
-    padding: 12px 25px;
-    font-size: 1.2rem;
+    padding: 12px 30px;
+    font-size: 1.3rem;
     border: none;
-    border-radius: 25px;
+    border-radius: 50px;
     cursor: pointer;
     font-family: 'Pacifico', cursive;
     transition: all 0.2s ease;
     margin: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
-#btn-yes { background: #ef4444; color: white; }
-#btn-no { background: #94a3b8; color: white; position: relative; }
+#btn-yes {
+    background: #ef4444; /* Merah */
+    color: white;
+}
 
-/* Letter Paper */
+#btn-yes:hover {
+    background: #dc2626;
+    transform: scale(1.1);
+}
+
+#btn-no {
+    background: #94a3b8; /* Abu-abu */
+    color: white;
+    z-index: 100;
+}
+
+/* =========================================
+   SURAT CINTA (HASIL AKHIR)
+   ========================================= */
+
 .letter-paper {
     background: #fff;
     color: #333;
     padding: 40px;
-    border-radius: 10px;
+    border-radius: 15px;
     max-width: 500px;
-    width: 90%;
+    width: 85%;
     margin: 0 auto;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-    animation: slideUp 1s ease-out;
-    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    animation: slideUp 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid #ffccd5;
 }
 
-.letter-paper h1 { font-size: 2rem; color: #be185d; margin-bottom: 20px; }
-.letter-paper p { font-size: 1.3rem; margin-bottom: 15px; }
-.signature { text-align: right; margin-top: 30px; font-weight: bold; }
-
-/* Background Animations */
-#falling-hearts {
-    position: fixed;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    width: 100%;
-    height: 100%;
+.letter-paper h1 {
+    font-size: 2.2rem;
+    color: #be185d;
+    margin-bottom: 20px;
 }
 
-.heart-fall {
-    position: absolute;
-    color: rgba(255, 255, 255, 0.6);
-    animation: fall linear infinite;
+.letter-paper p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.signature {
+    text-align: right;
+    margin-top: 30px;
+    font-weight: bold;
+    color: #be185d;
+}
+
+/* =========================================
+   ANIMASI-ANIMASI
+   ========================================= */
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    15% { transform: scale(1.15); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.15); }
+    70% { transform: scale(1); }
+}
+
+@keyframes fadePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
 @keyframes fall {
-    to { transform: translateY(100vh) rotate(360deg); }
+    to { transform: translateY(110vh) rotate(360deg); }
 }
 
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
-/* Responsiveness */
+/* Responsif untuk HP */
 @media (max-width: 600px) {
+    #big-heart { font-size: 120px; }
     .romantic-text { font-size: 1.4rem; }
-    .letter-paper { padding: 20px; }
-    .letter-paper h1 { font-size: 1.5rem; }
+    .letter-paper { padding: 25px; }
+    .letter-paper h1 { font-size: 1.6rem; }
+    .letter-paper p { font-size: 1.1rem; }
 }
