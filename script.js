@@ -20,22 +20,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const emojis = ['❤️', '💕', '💋', '😘', '💖'];
     let noClickCount = 0;
 
-    // 1. Generate Pohon Emoji
-    for (let i = 0; i < 30; i++) {
-        const leaf = document.createElement('span');
-        leaf.classList.add('leaf');
-        leaf.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-        
-        // Atur posisi acak membentuk bulatan pohon
-        const top = Math.random() * 120 - 60;
-        const left = Math.random() * 120 - 60;
-        
-        leaf.style.top = `${top}px`;
-        leaf.style.left = `${left}px`;
-        leaf.style.animationDelay = `${Math.random() * 2}s`;
-        
-        leavesContainer.appendChild(leaf);
-    }
+ // 1. Generate Pohon Emoji (VERSI PERBAIKAN)
+const totalEmojis = 40; // Lebih banyak agar lebih rimbun
+for (let i = 0; i < totalEmojis; i++) {
+    const leaf = document.createElement('span');
+    leaf.classList.add('leaf');
+    leaf.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+    
+    // Teknik distribusi polar agar membentuk lingkaran/daun pohon yang rapi
+    const angle = Math.random() * Math.PI * 2; // Sudut acak 360 derajat
+    const radius = Math.random() * 80; // Jarak sebaran dari pusat (atur ini untuk besar pohon)
+    
+    // Menghitung posisi X dan Y berdasarkan sudut dan radius
+    const x = Math.cos(angle) * radius;
+    const y = Math.sin(angle) * radius;
+    
+    // Posisikan tepat di atas batang (mengimbangi letak leaves-container)
+    leaf.style.left = `calc(50% + ${x}px)`;
+    leaf.style.top = `calc(50% + ${y}px)`;
+    
+    // Efek ukuran acak agar lebih natural
+    const size = Math.random() * (2.5 - 1.5) + 1.5;
+    leaf.style.fontSize = `${size}rem`;
+    
+    // Animasi delay yang berbeda tiap daun agar gerakan ayunannya natural
+    leaf.style.animationDelay = `${Math.random() * 2}s`;
+    
+    leavesContainer.appendChild(leaf);
+}
 
     // 2. Klik Pohon -> Meledak & Muncul Amplop
     treeContainer.addEventListener('click', () => {
@@ -117,4 +129,5 @@ document.addEventListener('DOMContentLoaded', () => {
             createHeart();
         }
     }
+
 });
